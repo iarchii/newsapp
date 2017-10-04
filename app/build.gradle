@@ -28,7 +28,6 @@ kapt {
 }
 
 dependencies {
-    compile 'com.facebook.fresco:fresco:0.10.0'
 
     //kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -45,7 +44,7 @@ dependencies {
     //REST
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 
     //dependency injection
@@ -63,7 +62,10 @@ dependencies {
         exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
     })
 
-    //Utils
+    //images
+    compile 'com.facebook.fresco:fresco:1.5.0'
+
+    //utils
     compile 'nl.littlerobots.rxlint:rxlint:1.5'
     compile 'com.jakewharton.threetenabp:threetenabp:1.0.5'
 

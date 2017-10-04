@@ -26,9 +26,9 @@ public class DetailViewActivity extends Activity {
         String summary = extras.getString("summary");
         String imageURL = extras.getString("imageURL");
 
-        TextView titleView = (TextView) findViewById(R.id.title);
-        DraweeView imageView = (DraweeView) findViewById(R.id.news_image);
-        TextView summaryView = (TextView) findViewById(R.id.summary_content);
+        TextView titleView = findViewById(R.id.title);
+        DraweeView imageView = findViewById(R.id.news_image);
+        TextView summaryView = findViewById(R.id.summary_content);
 
         titleView.setText(title);
         summaryView.setText(summary);
