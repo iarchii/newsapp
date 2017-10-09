@@ -10,6 +10,7 @@ import news.agoda.com.sample.R
 import news.agoda.com.sample.base.BaseActivity
 import news.agoda.com.sample.newslist.NewsDetailsFragment
 import news.agoda.com.sample.newslist.NewsListFragment
+import news.agoda.com.sample.newslist.NewsListFragmentBuilder
 
 
 class MainActivity : BaseActivity() {

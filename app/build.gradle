@@ -41,7 +41,7 @@ dependencies {
 
     //Generate fragment arguments
     compile 'com.hannesdorfmann.fragmentargs:annotation:3.0.2'
-    annotationProcessor 'com.hannesdorfmann.fragmentargs:processor:3.0.2'
+    kapt 'com.hannesdorfmann.fragmentargs:processor:3.0.2'
 
     //RxJava
     compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'

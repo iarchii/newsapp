@@ -1,6 +1,7 @@
 package news.agoda.com.sample.newslist
 
 import android.support.v4.widget.SwipeRefreshLayout
+import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState
 import news.agoda.com.sample.NewsEntity
@@ -8,7 +9,7 @@ import news.agoda.com.sample.R
 import news.agoda.com.sample.base.BaseLceFragment
 import news.agoda.com.sample.base.RxBasePresenter
 
-
+@FragmentWithArgs
 class NewsListFragment : BaseLceFragment<SwipeRefreshLayout,List<NewsEntity>,
         NewsListPresenter.View, NewsListPresenter>(){
     companion object {
