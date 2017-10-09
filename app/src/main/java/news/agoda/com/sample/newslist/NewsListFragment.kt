@@ -9,7 +9,12 @@ import news.agoda.com.sample.base.BaseLceFragment
 import news.agoda.com.sample.base.RxBasePresenter
 
 
-class NewsListFragment : BaseLceFragment<SwipeRefreshLayout,List<NewsEntity>,NewsListPresenter.View, NewsListPresenter>(){
+class NewsListFragment : BaseLceFragment<SwipeRefreshLayout,List<NewsEntity>,
+        NewsListPresenter.View, NewsListPresenter>(){
+    companion object {
+        const val TAG = "NewsListFragment"
+    }
+
     override fun createViewState(): LceViewState<List<NewsEntity>, NewsListPresenter.View> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
