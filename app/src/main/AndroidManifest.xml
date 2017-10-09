@@ -12,7 +12,7 @@
             android:name=".NewsApplication"
         >
         <activity
-                android:name="news.agoda.com.sample.NewsListActivity"
+                android:name="news.agoda.com.sample.old.NewsListActivity"
                 android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="news.agoda.com.sample.DetailViewActivity"/>
+        <activity android:name="news.agoda.com.sample.old.DetailViewActivity"/>
     </application>
 
 </manifest>

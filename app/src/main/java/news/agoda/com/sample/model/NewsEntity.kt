@@ -1,6 +1,6 @@
 package news.agoda.com.sample.model
 
-import news.agoda.com.sample.MediaEntity
+import news.agoda.com.sample.old.MediaEntity
 
 
 data class NewsEntity(

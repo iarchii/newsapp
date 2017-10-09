@@ -39,7 +39,7 @@ abstract class BaseLceFragment<CV : View, M, V : MvpLceView<M>, P : MvpPresenter
     /**
      * Inject the dependencies
      */
-    protected fun injectDependencies() {
+    protected open fun injectDependencies() {
 
     }
 }

@@ -1,4 +1,4 @@
-package news.agoda.com.sample;
+package news.agoda.com.sample.old;
 
 import android.util.Log;
 
@@ -12,8 +12,8 @@ import java.util.List;
 /**
  * This represents a news item
  */
-public class NewsEntity {
-    private static final String TAG = NewsEntity.class.getSimpleName();
+public class NewsEntity2 {
+    private static final String TAG = NewsEntity2.class.getSimpleName();
     private String title;
     private String summary;
     private String articleUrl;
@@ -21,7 +21,7 @@ public class NewsEntity {
     private String publishedDate;
     private List<MediaEntity> mediaEntityList;
 
-    public NewsEntity(JSONObject jsonObject) {
+    public NewsEntity2(JSONObject jsonObject) {
         try {
             mediaEntityList = new ArrayList<>();
             title = jsonObject.getString("title");
