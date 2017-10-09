@@ -7,11 +7,5 @@
     <include
         layout="@layout/toolbar_layout" />
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
-
+    <include layout="@layout/merge_main_split_pane" />
 </LinearLayout>
