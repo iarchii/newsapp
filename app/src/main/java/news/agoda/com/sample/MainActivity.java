@@ -1,11 +1,5 @@
 package news.agoda.com.sample;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,7 +38,7 @@ public class MainActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_news_list);
         Fresco.initialize(this);
 
         newsItemList = new ArrayList<>();
@@ -85,7 +85,7 @@ public class MainActivity
 
     private static String readStream(InputStream in) {
         StringBuilder sb = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in));) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
 
             String nextLine = "";
             while ((nextLine = reader.readLine()) != null) {

@@ -39,8 +39,8 @@ public class NewsListAdapter extends ArrayAdapter {
                 viewHolder = new ViewHolder();
                 LayoutInflater inflater = LayoutInflater.from(getContext());
                 convertView = inflater.inflate(R.layout.list_item_news, parent, false);
-                viewHolder.newsTitle = (TextView) convertView.findViewById(R.id.news_title);
-                viewHolder.imageView = (DraweeView) convertView.findViewById(R.id.news_item_image);
+                viewHolder.newsTitle = convertView.findViewById(R.id.news_title);
+                viewHolder.imageView = convertView.findViewById(R.id.news_item_image);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
