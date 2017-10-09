@@ -1,18 +1,29 @@
 package news.agoda.com.sample.newslist
 
+import com.futuremind.omili.helpers.applyTransformerSingle
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView
 import news.agoda.com.sample.base.RxBasePresenter
 import news.agoda.com.sample.model.NewsEntity
 import javax.inject.Inject
 
-class NewsListPresenter @Inject constructor() : RxBasePresenter<NewsListPresenter.View>() {
+class NewsListPresenter @Inject constructor(
+        private val loadNews: LoadNewsUseCase
 
-    interface View : MvpLceView<List<NewsEntity>> {
-        fun test()
-    }
+) : RxBasePresenter<NewsListPresenter.View>() {
+
+    interface View : MvpLceView<List<NewsEntity>>
 
     fun loadData(pullToRefresh: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        view?.showLoading(pullToRefresh)
+        loadNews.load()
+                .compose(applyTransformerSingle())
+                .subscribe({
+                    view?.setData(it)
+                    view?.showContent()
+                }, {
+                    view?.showError(it, pullToRefresh)
+                }).registerInPresenter()
     }
 
 }
+

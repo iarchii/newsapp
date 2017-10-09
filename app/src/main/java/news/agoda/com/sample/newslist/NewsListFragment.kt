@@ -3,6 +3,7 @@ package news.agoda.com.sample.newslist
 import android.support.v4.widget.SwipeRefreshLayout
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState
+import com.hannesdorfmann.mosby3.mvp.viewstate.lce.data.RetainingLceViewState
 import news.agoda.com.sample.NewsApplication
 import news.agoda.com.sample.R
 import news.agoda.com.sample.base.BaseLceFragment
@@ -20,7 +21,7 @@ class NewsListFragment : BaseLceFragment<SwipeRefreshLayout, List<NewsEntity>,
     private var adapter: NewsListAdapter = NewsListAdapter(context)
 
     override fun createViewState(): LceViewState<List<NewsEntity>, NewsListPresenter.View>
-            = NewsListViewState()
+            = RetainingLceViewState<List<NewsEntity>, NewsListPresenter.View>()
 
     override fun getErrorMessage(e: Throwable?, pullToRefresh: Boolean): String
             = e?.localizedMessage ?: getString(R.string.unknown_error)

@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface RemoteDataSource{
 
     @GET("bins/nl6jh")
-    fun getNews() : Single<NewsEntity>
+    fun getNews() : Single<List<NewsEntity>>
 }
 

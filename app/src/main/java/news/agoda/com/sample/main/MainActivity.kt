@@ -6,6 +6,7 @@ import android.view.View
 import com.futuremind.omili.helpers.show
 import kotlinx.android.synthetic.main.merge_main_split_pane.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
+import news.agoda.com.sample.NewsApplication
 import news.agoda.com.sample.R
 import news.agoda.com.sample.base.BaseActivity
 import news.agoda.com.sample.newslist.NewsDetailsFragment
@@ -82,7 +83,8 @@ class MainActivity : BaseActivity() {
     }
 
     override fun injectDependencies() {
-        mainActivityComponent = DaggerMainActivityComponent.create()
+        mainActivityComponent = DaggerMainActivityComponent
+                .builder().baseComponent(NewsApplication.baseComponent).build()
         mainActivityComponent.inject(this)
     }
 
