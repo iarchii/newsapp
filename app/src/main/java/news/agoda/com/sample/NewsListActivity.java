@@ -27,11 +27,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity
+public class NewsListActivity
         extends ListActivity
         implements Callback {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = NewsListActivity.class.getSimpleName();
     private List<NewsEntity> newsItemList;
     private Handler handler = new Handler(Looper.getMainLooper());
 
@@ -114,7 +114,7 @@ public class MainActivity
                     Log.e(TAG, "fail to parse json string");
                 }
 
-                NewsListAdapter adapter = new NewsListAdapter(MainActivity.this, R.layout.list_item_news, newsItemList);
+                NewsListAdapter adapter = new NewsListAdapter(NewsListActivity.this, R.layout.list_item_news, newsItemList);
                 setListAdapter(adapter);
 
                 ListView listView = getListView();
@@ -124,7 +124,7 @@ public class MainActivity
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         NewsEntity newsEntity = newsItemList.get(position);
                         String title = newsEntity.getTitle();
-                        Intent intent = new Intent(MainActivity.this, DetailViewActivity.class);
+                        Intent intent = new Intent(NewsListActivity.this, DetailViewActivity.class);
                         intent.putExtra("title", title);
                         startActivity(intent);
                     }
