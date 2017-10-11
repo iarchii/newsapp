@@ -1,48 +1,33 @@
 package news.agoda.com.sample.newslist
 
-import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
-import android.view.View
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.data.RetainingLceViewState
-import kotlinx.android.synthetic.main.fragment_news_list.*
 import news.agoda.com.sample.NewsApplication
 import news.agoda.com.sample.R
-import news.agoda.com.sample.base.BaseLceFragment
+import news.agoda.com.sample.base.ListAdapter
+import news.agoda.com.sample.base.RefreshRecyclerFragment
 import news.agoda.com.sample.model.NewsEntity
 
 @FragmentWithArgs
-class NewsListFragment : BaseLceFragment<SwipeRefreshLayout, List<NewsEntity>,
-        NewsListPresenter.View, NewsListPresenter>(), NewsListPresenter.View {
+class NewsListFragment : RefreshRecyclerFragment<List<NewsEntity>,
+        NewsListPresenter.View, NewsListPresenter, NewsListViewHolder>(), NewsListPresenter.View {
     companion object {
         const val TAG = "NewsListFragment"
     }
 
     private lateinit var newsListComponent: NewsListComponent
 
-    private lateinit var adapter: NewsListAdapter
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        adapter = NewsListAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.adapter = adapter
-    }
+    override fun createAdapter(): ListAdapter<List<NewsEntity>, NewsListViewHolder>
+            = NewsListAdapter()
+
 
     override fun createViewState(): LceViewState<List<NewsEntity>, NewsListPresenter.View>
             = RetainingLceViewState<List<NewsEntity>, NewsListPresenter.View>()
 
     override fun getErrorMessage(e: Throwable?, pullToRefresh: Boolean): String
             = e?.localizedMessage ?: getString(R.string.unknown_error)
-
-
-    override fun getData(): List<NewsEntity> = adapter.getData()
-
-    override fun setData(data: List<NewsEntity>) {
-        adapter.setData(data)
-    }
 
     override fun loadData(pullToRefresh: Boolean) {
         presenter.loadData(pullToRefresh)
@@ -61,5 +46,7 @@ class NewsListFragment : BaseLceFragment<SwipeRefreshLayout, List<NewsEntity>,
                 .build()
         newsListComponent.inject(this)
     }
+
+
 }
 

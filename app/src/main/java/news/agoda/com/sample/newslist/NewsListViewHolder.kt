@@ -10,13 +10,13 @@ import news.agoda.com.sample.model.NewsEntity
 
 class NewsListViewHolder(itemView: View)  : RecyclerView.ViewHolder(itemView) {
 
-    lateinit var newsEntity: NewsEntity
-    fun bind(newsEntity: NewsEntity) {
+    var newsEntity: NewsEntity? = null
+    fun bind(newsEntity: NewsEntity?) {
         this.newsEntity = newsEntity
-        itemView.news_title.text = newsEntity.title
+        itemView.news_title.text = newsEntity?.title
 
         val draweeController = Fresco.newDraweeControllerBuilder()
-                .setImageRequest(ImageRequest.fromUri(Uri.parse(newsEntity.valmediaEntityList?.firstOrNull()?.url ?: "")))
+                .setImageRequest(ImageRequest.fromUri(Uri.parse(newsEntity?.valmediaEntityList?.firstOrNull()?.url ?: "")))
                 .setOldController(itemView.news_item_image.controller).build()
 
         itemView.news_item_image.controller = draweeController

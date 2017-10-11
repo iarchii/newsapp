@@ -1,6 +1,9 @@
 package news.agoda.com.sample.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class MediaEntity(
         val url: String,
         val format: String,
@@ -10,4 +13,4 @@ data class MediaEntity(
         val subType: String,
         val caption: String? = null,
         val copyright: String
-)
+) : Parcelable

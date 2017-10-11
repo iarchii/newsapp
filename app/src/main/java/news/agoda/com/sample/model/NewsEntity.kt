@@ -1,8 +1,10 @@
 package news.agoda.com.sample.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-
+@Parcelize
 data class NewsEntity(
     val title: String? = null,
     @SerializedName("abstract")
@@ -13,4 +15,4 @@ data class NewsEntity(
     val publishedDate: String? = null,
     @SerializedName("multimedia")
     val valmediaEntityList: List<MediaEntity>? = null
-)
+) : Parcelable
