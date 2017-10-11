@@ -1,5 +1,6 @@
 package news.agoda.com.sample.newslist
 
+import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState
@@ -11,14 +12,19 @@ import news.agoda.com.sample.model.NewsEntity
 
 @FragmentWithArgs
 class NewsListFragment : BaseLceFragment<SwipeRefreshLayout, List<NewsEntity>,
-        NewsListPresenter.View, NewsListPresenter>() {
+        NewsListPresenter.View, NewsListPresenter>(), NewsListPresenter.View {
     companion object {
         const val TAG = "NewsListFragment"
     }
 
     private lateinit var newsListComponent: NewsListComponent
 
-    private var adapter: NewsListAdapter = NewsListAdapter(context)
+    private lateinit var adapter: NewsListAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        adapter = NewsListAdapter(context)
+    }
 
     override fun createViewState(): LceViewState<List<NewsEntity>, NewsListPresenter.View>
             = RetainingLceViewState<List<NewsEntity>, NewsListPresenter.View>()
