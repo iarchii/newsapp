@@ -1,13 +1,12 @@
 package news.agoda.com.sample.newslist
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import news.agoda.com.sample.R
 import news.agoda.com.sample.model.NewsEntity
 
-class NewsListAdapter(context: Context)  : RecyclerView.Adapter<NewsListViewHolder>(){
+class NewsListAdapter : RecyclerView.Adapter<NewsListViewHolder>(){
     private var newsList: MutableList<NewsEntity> = mutableListOf()
 
     override fun onBindViewHolder(holder: NewsListViewHolder, position: Int) {

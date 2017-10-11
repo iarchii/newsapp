@@ -2,9 +2,12 @@ package news.agoda.com.sample.newslist
 
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.data.RetainingLceViewState
+import kotlinx.android.synthetic.main.fragment_news_list.*
 import news.agoda.com.sample.NewsApplication
 import news.agoda.com.sample.R
 import news.agoda.com.sample.base.BaseLceFragment
@@ -21,9 +24,11 @@ class NewsListFragment : BaseLceFragment<SwipeRefreshLayout, List<NewsEntity>,
 
     private lateinit var adapter: NewsListAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        adapter = NewsListAdapter(context)
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        adapter = NewsListAdapter()
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.adapter = adapter
     }
 
     override fun createViewState(): LceViewState<List<NewsEntity>, NewsListPresenter.View>

@@ -6,7 +6,7 @@ import org.json.JSONObject;
 /**
  * This class represents a media item
  */
-public class MediaEntity {
+public class MediaEntity2 {
     private String url;
     private String format;
     private int height;
@@ -16,7 +16,7 @@ public class MediaEntity {
     private String caption;
     private String copyright;
 
-    public MediaEntity(JSONObject jsonObject) throws JSONException {
+    public MediaEntity2(JSONObject jsonObject) throws JSONException {
         url = jsonObject.getString("url");
         format = jsonObject.getString("format");
         height = jsonObject.getInt("height");

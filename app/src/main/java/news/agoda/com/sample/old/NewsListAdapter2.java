@@ -30,10 +30,10 @@ public class NewsListAdapter2 extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         NewsEntity2 newsEntity = (NewsEntity2) getItem(position);
-        List<MediaEntity> mediaEntityList = newsEntity.getMediaEntity();
+        List<MediaEntity2> mediaEntityList = newsEntity.getMediaEntity();
         String thumbnailURL = "";
         if(mediaEntityList.size() >0 ) {
-            MediaEntity mediaEntity = mediaEntityList.get(0);
+            MediaEntity2 mediaEntity = mediaEntityList.get(0);
             thumbnailURL = mediaEntity.getUrl();
 
             ViewHolder viewHolder;

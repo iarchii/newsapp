@@ -16,7 +16,7 @@ class NewsListViewHolder(itemView: View)  : RecyclerView.ViewHolder(itemView) {
         itemView.news_title.text = newsEntity.title
 
         val draweeController = Fresco.newDraweeControllerBuilder()
-                .setImageRequest(ImageRequest.fromUri(Uri.parse(newsEntity.valmediaEntityList?.first()?.url)))
+                .setImageRequest(ImageRequest.fromUri(Uri.parse(newsEntity.valmediaEntityList?.firstOrNull()?.url ?: "")))
                 .setOldController(itemView.news_item_image.controller).build()
 
         itemView.news_item_image.controller = draweeController

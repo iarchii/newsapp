@@ -19,7 +19,7 @@ public class NewsEntity2 {
     private String articleUrl;
     private String byline;
     private String publishedDate;
-    private List<MediaEntity> mediaEntityList;
+    private List<MediaEntity2> mediaEntityList;
 
     public NewsEntity2(JSONObject jsonObject) {
         try {
@@ -33,7 +33,7 @@ public class NewsEntity2 {
                 JSONArray mediaArray = jsonObject.getJSONArray("multimedia");
                 for (int i = 0; i < mediaArray.length(); i++) {
                     JSONObject mediaObject = mediaArray.getJSONObject(i);
-                    MediaEntity mediaEntity = new MediaEntity(mediaObject);
+                    MediaEntity2 mediaEntity = new MediaEntity2(mediaObject);
                     mediaEntityList.add(mediaEntity);
                 }
             }
@@ -62,7 +62,7 @@ public class NewsEntity2 {
         return publishedDate;
     }
 
-    public List<MediaEntity> getMediaEntity() {
+    public List<MediaEntity2> getMediaEntity() {
         return mediaEntityList;
     }
 }

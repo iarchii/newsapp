@@ -1,12 +1,12 @@
 package news.agoda.com.sample.repository.remote
 
 import io.reactivex.Single
-import news.agoda.com.sample.model.NewsEntity
+import news.agoda.com.sample.model.NewsResponse
 import retrofit2.http.GET
 
 interface RemoteDataSource{
 
     @GET("bins/nl6jh")
-    fun getNews() : Single<List<NewsEntity>>
+    fun getNews() : Single<NewsResponse>
 }
 
