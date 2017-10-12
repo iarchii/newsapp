@@ -5,10 +5,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.request.ImageRequest
+import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.list_item_news.view.*
 import news.agoda.com.sample.model.NewsEntity
 
-class NewsListViewHolder(itemView: View)  : RecyclerView.ViewHolder(itemView) {
+class NewsListViewHolder(itemView: View, val listener: NewsListAdapter.NewsClickedListener)
+    : RecyclerView.ViewHolder(itemView) {
 
     var newsEntity: NewsEntity? = null
     fun bind(newsEntity: NewsEntity?) {
@@ -20,6 +22,11 @@ class NewsListViewHolder(itemView: View)  : RecyclerView.ViewHolder(itemView) {
                 .setOldController(itemView.news_item_image.controller).build()
 
         itemView.news_item_image.controller = draweeController
+
+        RxView.clicks(itemView).
+                subscribe({
+                    newsEntity?.let { listener.onNewsClicked(it) }
+                })
     }
 
 }

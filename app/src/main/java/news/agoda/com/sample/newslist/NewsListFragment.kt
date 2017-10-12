@@ -7,21 +7,24 @@ import news.agoda.com.sample.NewsApplication
 import news.agoda.com.sample.R
 import news.agoda.com.sample.base.ListAdapter
 import news.agoda.com.sample.base.RefreshRecyclerFragment
+import news.agoda.com.sample.helpers.IntentStarter
 import news.agoda.com.sample.model.NewsEntity
+import javax.inject.Inject
 
 @FragmentWithArgs
 class NewsListFragment : RefreshRecyclerFragment<List<NewsEntity>,
-        NewsListPresenter.View, NewsListPresenter, NewsListViewHolder>(), NewsListPresenter.View {
+        NewsListPresenter.View, NewsListPresenter, NewsListViewHolder>(), NewsListPresenter.View, NewsListAdapter.NewsClickedListener {
+
+    @Inject lateinit var intentStarter :IntentStarter
+
     companion object {
         const val TAG = "NewsListFragment"
     }
 
     private lateinit var newsListComponent: NewsListComponent
 
-
     override fun createAdapter(): ListAdapter<List<NewsEntity>, NewsListViewHolder>
-            = NewsListAdapter()
-
+            = NewsListAdapter(this)
 
     override fun createViewState(): LceViewState<List<NewsEntity>, NewsListPresenter.View>
             = RetainingLceViewState<List<NewsEntity>, NewsListPresenter.View>()
@@ -38,7 +41,6 @@ class NewsListFragment : RefreshRecyclerFragment<List<NewsEntity>,
     override val layoutRes: Int
         get() = R.layout.fragment_news_list
 
-
     override fun injectDependencies() {
         super.injectDependencies()
         newsListComponent = DaggerNewsListComponent.builder()
@@ -47,6 +49,7 @@ class NewsListFragment : RefreshRecyclerFragment<List<NewsEntity>,
         newsListComponent.inject(this)
     }
 
-
+    override fun onNewsClicked(news: NewsEntity) {
+        intentStarter.showNewsDetails(context,news)
+    }
 }
-

@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name="news.agoda.com.sample.old.DetailViewActivity"/>
+        <activity android:name="news.agoda.com.sample.newsdetails.DetailsActivity"/>
     </application>
 
 </manifest>

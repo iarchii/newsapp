@@ -16,6 +16,11 @@ import news.agoda.com.sample.newslist.NewsListFragmentBuilder
 
 class MainActivity : BaseActivity() {
 
+    companion object {
+        const val KEY_SHOW_ACTION = "key_show_action"
+        const val KEY_SHOW_ACTION_NEWS_DETAILS = "key_show_action_news_details"
+        const val KEY_DATA_NEWS_DETAILS = "key_data_news_details"
+    }
 
     private lateinit var mainActivityComponent: MainActivityComponent
     private var listFragment: NewsListFragment? = null
@@ -24,7 +29,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_container)
+        setContentView(R.layout.activity_main)
 
         initToolbar()
         getPreviousFragments()
@@ -78,8 +83,7 @@ class MainActivity : BaseActivity() {
 
     private fun initToolbar() {
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)
+
     }
 
     override fun injectDependencies() {

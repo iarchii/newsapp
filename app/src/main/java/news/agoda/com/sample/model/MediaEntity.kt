@@ -10,7 +10,7 @@ data class MediaEntity(
         val height: Int,
         val width: Int,
         val type: String,
-        val subType: String,
-        val caption: String? = null,
+        val subType: String?,
+        val caption: String?,
         val copyright: String
 ) : Parcelable
