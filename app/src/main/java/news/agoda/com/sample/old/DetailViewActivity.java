@@ -1,4 +1,4 @@
-package news.agoda.com.sample;
+package news.agoda.com.sample.old;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.DraweeView;
+
+import news.agoda.com.sample.R;
 
 /**
  * News detail view

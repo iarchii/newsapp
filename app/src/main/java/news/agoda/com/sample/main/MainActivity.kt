@@ -6,6 +6,7 @@ import android.view.View
 import com.futuremind.omili.helpers.show
 import kotlinx.android.synthetic.main.merge_main_split_pane.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
+import news.agoda.com.sample.NewsApplication
 import news.agoda.com.sample.R
 import news.agoda.com.sample.base.BaseActivity
 import news.agoda.com.sample.newslist.NewsDetailsFragment
@@ -15,6 +16,11 @@ import news.agoda.com.sample.newslist.NewsListFragmentBuilder
 
 class MainActivity : BaseActivity() {
 
+    companion object {
+        const val KEY_SHOW_ACTION = "key_show_action"
+        const val KEY_SHOW_ACTION_NEWS_DETAILS = "key_show_action_news_details"
+        const val KEY_DATA_NEWS_DETAILS = "key_data_news_details"
+    }
 
     private lateinit var mainActivityComponent: MainActivityComponent
     private var listFragment: NewsListFragment? = null
@@ -23,7 +29,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_container)
+        setContentView(R.layout.activity_main)
 
         initToolbar()
         getPreviousFragments()
@@ -77,12 +83,12 @@ class MainActivity : BaseActivity() {
 
     private fun initToolbar() {
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)
+
     }
 
     override fun injectDependencies() {
-        mainActivityComponent = DaggerMainActivityComponent.create()
+        mainActivityComponent = DaggerMainActivityComponent
+                .builder().baseComponent(NewsApplication.baseComponent).build()
         mainActivityComponent.inject(this)
     }
 

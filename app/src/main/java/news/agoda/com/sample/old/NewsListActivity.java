@@ -1,4 +1,4 @@
-package news.agoda.com.sample;
+package news.agoda.com.sample.old;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -27,12 +27,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import news.agoda.com.sample.R;
+
 public class NewsListActivity
         extends ListActivity
         implements Callback {
 
     private static final String TAG = NewsListActivity.class.getSimpleName();
-    private List<NewsEntity> newsItemList;
+    private List<NewsEntity2> newsItemList;
     private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
@@ -107,14 +109,14 @@ public class NewsListActivity
                     JSONArray resultArray = jsonObject.getJSONArray("results");
                     for (int i = 0; i < resultArray.length(); i++) {
                         JSONObject newsObject = resultArray.getJSONObject(i);
-                        NewsEntity newsEntity = new NewsEntity(newsObject);
+                        NewsEntity2 newsEntity = new NewsEntity2(newsObject);
                         newsItemList.add(newsEntity);
                     }
                 } catch (JSONException e) {
                     Log.e(TAG, "fail to parse json string");
                 }
 
-                NewsListAdapter adapter = new NewsListAdapter(NewsListActivity.this, R.layout.list_item_news, newsItemList);
+                NewsListAdapter2 adapter = new NewsListAdapter2(NewsListActivity.this, R.layout.list_item_news, newsItemList);
                 setListAdapter(adapter);
 
                 ListView listView = getListView();
@@ -122,7 +124,7 @@ public class NewsListActivity
 
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        NewsEntity newsEntity = newsItemList.get(position);
+                        NewsEntity2 newsEntity = newsItemList.get(position);
                         String title = newsEntity.getTitle();
                         Intent intent = new Intent(NewsListActivity.this, DetailViewActivity.class);
                         intent.putExtra("title", title);

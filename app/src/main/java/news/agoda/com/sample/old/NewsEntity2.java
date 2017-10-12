@@ -1,4 +1,4 @@
-package news.agoda.com.sample;
+package news.agoda.com.sample.old;
 
 import android.util.Log;
 
@@ -12,16 +12,16 @@ import java.util.List;
 /**
  * This represents a news item
  */
-public class NewsEntity {
-    private static final String TAG = NewsEntity.class.getSimpleName();
+public class NewsEntity2 {
+    private static final String TAG = NewsEntity2.class.getSimpleName();
     private String title;
     private String summary;
     private String articleUrl;
     private String byline;
     private String publishedDate;
-    private List<MediaEntity> mediaEntityList;
+    private List<MediaEntity2> mediaEntityList;
 
-    public NewsEntity(JSONObject jsonObject) {
+    public NewsEntity2(JSONObject jsonObject) {
         try {
             mediaEntityList = new ArrayList<>();
             title = jsonObject.getString("title");
@@ -33,7 +33,7 @@ public class NewsEntity {
                 JSONArray mediaArray = jsonObject.getJSONArray("multimedia");
                 for (int i = 0; i < mediaArray.length(); i++) {
                     JSONObject mediaObject = mediaArray.getJSONObject(i);
-                    MediaEntity mediaEntity = new MediaEntity(mediaObject);
+                    MediaEntity2 mediaEntity = new MediaEntity2(mediaObject);
                     mediaEntityList.add(mediaEntity);
                 }
             }
@@ -62,7 +62,7 @@ public class NewsEntity {
         return publishedDate;
     }
 
-    public List<MediaEntity> getMediaEntity() {
+    public List<MediaEntity2> getMediaEntity() {
         return mediaEntityList;
     }
 }

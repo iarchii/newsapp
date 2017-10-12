@@ -27,6 +27,10 @@ kapt {
     generateStubs = true
 }
 
+androidExtensions {
+    experimental = true
+}
+
 dependencies {
 
     //kotlin
@@ -82,5 +86,8 @@ dependencies {
     //utils
     compile 'nl.littlerobots.rxlint:rxlint:1.5'
     compile 'com.jakewharton.threetenabp:threetenabp:1.0.5'
+
+    //UI
+    compile 'com.github.castorflex.smoothprogressbar:library-circular:1.3.0'
 
 }
