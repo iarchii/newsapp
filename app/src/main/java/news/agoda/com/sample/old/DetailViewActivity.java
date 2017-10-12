@@ -20,7 +20,7 @@ public class DetailViewActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.fragment_details);
 
         Bundle extras = getIntent().getExtras();
         storyURL = extras.getString("storyURL");
@@ -28,7 +28,7 @@ public class DetailViewActivity extends Activity {
         String summary = extras.getString("summary");
         String imageURL = extras.getString("imageURL");
 
-        TextView titleView = findViewById(R.id.title);
+        TextView titleView = findViewById(R.id.titleTv);
         DraweeView imageView = findViewById(R.id.news_image);
         TextView summaryView = findViewById(R.id.summary_content);
 
