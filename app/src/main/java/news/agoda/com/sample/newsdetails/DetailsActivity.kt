@@ -19,7 +19,12 @@ class DetailsActivity : BaseActivity() {
 
         if (savedInstanceState == null) {
             val news = intent.getParcelableExtra<NewsEntity>(KEY_NEWS)
+            val fragment = NewsDetailsFragmentBuilder(news)
+                    .build()
 
+            supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, fragment)
+                    .commit()
             
         }
     }
@@ -28,5 +33,10 @@ class DetailsActivity : BaseActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

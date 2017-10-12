@@ -21,6 +21,8 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.os.Parcelable
+import android.support.v4.content.ContextCompat
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
@@ -29,6 +31,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpPresenter
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView
 
 import kotlinx.android.synthetic.main.fragment_news_list.*
+import news.agoda.com.sample.R
 
 /**
  * @author Hannes Dorfmann
@@ -42,7 +45,10 @@ abstract class RefreshRecyclerFragment<M : List<Parcelable>, V : MvpLceView<M>, 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = createAdapter()
+        val itemDecorator = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+        itemDecorator.setDrawable(ContextCompat.getDrawable(activity, R.drawable.abc_list_divider_mtrl_alpha))
         recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.addItemDecoration(itemDecorator)
         recyclerView.adapter = adapter
     }
 
