@@ -49,17 +49,17 @@ class NewsDetailsFragment : BaseLceFragment<LinearLayout, NewsEntity, View, News
 
         presenter.registerSubscription(
                 RxView.clicks(full_story_link)
-                .subscribe({
-                    showFullArticle()
-                }))
+                        .subscribe({
+                            showFullArticle()
+                        }))
 
         showContent()
     }
 
-    private fun showFullArticle() = if (news.articleUrl.isNullOrEmpty()) {
-        activity.showToastShort(R.string.cant_open_article)
-    } else {
-        intentStarter.showBrowserForUrl(activity, news.articleUrl!!)
+    private fun showFullArticle() {
+        val uri = presenter.getUri(news.articleUrl)
+        uri?.let { intentStarter.showBrowserForUrl(activity, uri) }
+                ?: activity.showToastShort(R.string.cant_open_article)
     }
 
 

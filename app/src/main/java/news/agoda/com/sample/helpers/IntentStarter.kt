@@ -38,9 +38,9 @@ class IntentStarter @Inject constructor(
         return i
     }
 
-    fun showBrowserForUrl(context: Context, url : String){
+    fun showBrowserForUrl(context: Context, url: Uri){
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(url)
+        intent.data = url
         context.startActivity(intent)
     }
 
