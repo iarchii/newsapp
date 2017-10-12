@@ -3,6 +3,8 @@ package news.agoda.com.sample.main
 import android.animation.LayoutTransition
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.futuremind.omili.helpers.show
 import kotlinx.android.synthetic.main.merge_main_split_pane.*
@@ -29,7 +31,6 @@ class MainActivity : BaseActivity() {
     private var listFragment: NewsListFragment? = null
     private var detailsFragment: NewsDetailsFragment? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -51,6 +52,24 @@ class MainActivity : BaseActivity() {
             showList(true)
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        val id = item.itemId
+        return if (id == R.id.action_settings) {
+            true
+        } else super.onOptionsItemSelected(item)
+
+    }
+
 
     private fun showList(removeDetailsFragment: Boolean) {
         supportFragmentManager.beginTransaction()
@@ -113,13 +132,11 @@ class MainActivity : BaseActivity() {
         }
     }
 
-
     private fun showNews(news: NewsEntity) {
         rightPane!!.visibility = View.VISIBLE
 
         val fragment = NewsDetailsFragmentBuilder(news)
                 .build()
-
         supportFragmentManager.beginTransaction()
                 .replace(R.id.rightPane, fragment, NewsDetailsFragment.TAG)
                 .commit()
