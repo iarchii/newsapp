@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit
 
 class RestApiProvider {
 
-    private val ISO_DATE = "yyyy-MM-dd'T'HH:mm:ss'Z'"
     private val BASE_URL = "https://api.myjson.com/"
 
     fun provide(): RemoteDataSource {

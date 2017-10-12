@@ -20,19 +20,19 @@ abstract class RefreshFragment<M, V : MvpLceView<M>, P : MvpPresenter<V>> :
 
     override fun showContent() {
         super.showContent()
-        contentView.setRefreshing(false)
+        contentView.isRefreshing = false
     }
 
     override fun showError(e: Throwable, pullToRefresh: Boolean) {
         super.showError(e, pullToRefresh)
-        contentView.setRefreshing(false)
+        contentView.isRefreshing = false
     }
 
     override fun showLoading(pullToRefresh: Boolean) {
         super.showLoading(pullToRefresh)
-        if (pullToRefresh && !contentView.isRefreshing()) {
+        if (pullToRefresh && !contentView.isRefreshing) {
             // Workaround for measure bug: https://code.google.com/p/android/issues/detail?id=77712
-            contentView.post(Runnable { contentView.setRefreshing(true) })
+            contentView.post{ contentView.isRefreshing = true }
         }
     }
 }

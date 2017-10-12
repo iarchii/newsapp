@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.request.ImageRequest
-import com.futuremind.omili.helpers.showToastShort
 import com.hannesdorfmann.fragmentargs.annotation.Arg
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState
@@ -16,6 +15,7 @@ import news.agoda.com.sample.NewsApplication
 import news.agoda.com.sample.R
 import news.agoda.com.sample.base.BaseLceFragment
 import news.agoda.com.sample.helpers.IntentStarter
+import news.agoda.com.sample.helpers.showToastShort
 import news.agoda.com.sample.model.NewsEntity
 import news.agoda.com.sample.newsdetails.NewsDetailsPresenter.View
 import javax.inject.Inject
@@ -56,12 +56,10 @@ class NewsDetailsFragment : BaseLceFragment<LinearLayout, NewsEntity, View, News
         showContent()
     }
 
-    private fun showFullArticle() {
-        if (news.articleUrl.isNullOrEmpty()) {
-            activity.showToastShort(R.string.cant_open_article)
-        } else {
-            intentStarter.showBrowserForUrl(activity, news.articleUrl!!)
-        }
+    private fun showFullArticle() = if (news.articleUrl.isNullOrEmpty()) {
+        activity.showToastShort(R.string.cant_open_article)
+    } else {
+        intentStarter.showBrowserForUrl(activity, news.articleUrl!!)
     }
 
 

@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.futuremind.omili.helpers.show
+import news.agoda.com.sample.helpers.show
 import kotlinx.android.synthetic.main.merge_main_split_pane.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 import news.agoda.com.sample.NewsApplication

@@ -1,4 +1,4 @@
-package com.futuremind.omili.helpers
+package news.agoda.com.sample.helpers
 
 import android.support.v4.widget.SwipeRefreshLayout
 import android.util.DisplayMetrics

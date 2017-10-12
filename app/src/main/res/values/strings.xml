@@ -6,4 +6,5 @@
     <string name="unknown_error">Unknown error occurred</string>
     <string name="empty_news">No news!</string>
     <string name="cant_open_article">Can\'t open article</string>
+    <string name="full_story_label">Full story</string>
 </resources>

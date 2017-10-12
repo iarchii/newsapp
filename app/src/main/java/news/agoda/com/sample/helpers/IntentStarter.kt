@@ -15,17 +15,15 @@ class IntentStarter @Inject constructor(
 
     private fun isTablet(context: Context): Boolean = context.resources.getBoolean(R.bool.tablet)
 
-    fun showNewsDetails(context: Context, news: NewsEntity) {
-        context.startActivity(getNewsDetailsIntent(context, news))
-    }
+    fun showNewsDetails(context: Context, news: NewsEntity) =
+            context.startActivity(getNewsDetailsIntent(context, news))
 
-    private fun getNewsDetailsIntent(context: Context, news: NewsEntity): Intent {
-        return if (isTablet(context)) {
-            getShowNewsInSameActivityIntent(context, news)
-        } else {
-            getShowNewsInNewActivityIntent(context, news)
-        }
-    }
+    private fun getNewsDetailsIntent(context: Context, news: NewsEntity): Intent =
+            if (isTablet(context)) {
+                getShowNewsInSameActivityIntent(context, news)
+            } else {
+                getShowNewsInNewActivityIntent(context, news)
+            }
 
     private fun getShowNewsInSameActivityIntent(context: Context, news: NewsEntity): Intent {
         val i = Intent(context, MainActivity::class.java)

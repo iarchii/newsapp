@@ -9,10 +9,10 @@ import com.jakewharton.rxbinding2.view.RxView
 import kotlinx.android.synthetic.main.list_item_news.view.*
 import news.agoda.com.sample.model.NewsEntity
 
-class NewsListViewHolder(itemView: View, val listener: NewsListAdapter.NewsClickedListener)
+class NewsListViewHolder(itemView: View, private val listener: NewsListAdapter.NewsClickedListener)
     : RecyclerView.ViewHolder(itemView) {
 
-    var newsEntity: NewsEntity? = null
+    private var newsEntity: NewsEntity? = null
     fun bind(newsEntity: NewsEntity?) {
         this.newsEntity = newsEntity
         itemView.news_title.text = newsEntity?.title

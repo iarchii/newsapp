@@ -1,6 +1,6 @@
 package news.agoda.com.sample.newslist
 
-import com.futuremind.omili.helpers.applyTransformerSingle
+import news.agoda.com.sample.helpers.applyTransformerSingle
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView
 import news.agoda.com.sample.base.RxViewBasePresenter
 import news.agoda.com.sample.helpers.Logger

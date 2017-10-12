@@ -1,6 +1,7 @@
 package news.agoda.com.sample.dagger
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
@@ -18,7 +19,7 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideDefaultSharedPrefs(cxt: Context) =
+    fun provideDefaultSharedPrefs(cxt: Context): SharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(cxt)
 
 

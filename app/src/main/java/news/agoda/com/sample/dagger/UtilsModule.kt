@@ -9,11 +9,9 @@ import news.agoda.com.sample.helpers.Logger
 class UtilsModule {
 
     @Provides
-    fun provideLogger(): Logger {
-        return object : Logger{
-            override fun logException(throwable: Throwable) {
-                throwable.printStackTrace()
-            }
+    fun provideLogger(): Logger = object : Logger{
+        override fun logException(throwable: Throwable) {
+            throwable.printStackTrace()
         }
     }
 
