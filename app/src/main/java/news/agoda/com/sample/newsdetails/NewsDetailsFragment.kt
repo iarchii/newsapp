@@ -34,7 +34,6 @@ class NewsDetailsFragment : BaseLceFragment<LinearLayout, NewsEntity, View, News
 
     override fun onViewCreated(view: android.view.View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         showNews()
     }
 
@@ -48,17 +47,21 @@ class NewsDetailsFragment : BaseLceFragment<LinearLayout, NewsEntity, View, News
                 .setOldController(news_image.controller).build()
         news_image.controller = draweeController
 
-        RxView.clicks(full_story_link)
+        presenter.registerSubscription(
+                RxView.clicks(full_story_link)
                 .subscribe({
-                    if(news.articleUrl.isNullOrEmpty()){
-                        activity.showToastShort(R.string.cant_open_article)
-                    }else{
-                        intentStarter.showBrowserForUrl(activity, news.articleUrl!!)
-                    }
-
-                })
+                    showFullArticle()
+                }))
 
         showContent()
+    }
+
+    private fun showFullArticle() {
+        if (news.articleUrl.isNullOrEmpty()) {
+            activity.showToastShort(R.string.cant_open_article)
+        } else {
+            intentStarter.showBrowserForUrl(activity, news.articleUrl!!)
+        }
     }
 
 
