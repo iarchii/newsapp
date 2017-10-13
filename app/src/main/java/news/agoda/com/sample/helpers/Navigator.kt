@@ -2,6 +2,7 @@ package news.agoda.com.sample.helpers
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.net.Uri
 import news.agoda.com.sample.R
 import news.agoda.com.sample.main.MainActivity
@@ -10,16 +11,17 @@ import news.agoda.com.sample.newsdetails.DetailsActivity
 import javax.inject.Inject
 
 
-class IntentStarter @Inject constructor(
+class Navigator @Inject constructor(
+        private val resources: Resources
 ) {
 
-    private fun isTablet(context: Context): Boolean = context.resources.getBoolean(R.bool.tablet)
+    private fun isTablet(): Boolean = resources.getBoolean(R.bool.tablet)
 
     fun showNewsDetails(context: Context, news: NewsEntity) =
             context.startActivity(getNewsDetailsIntent(context, news))
 
     private fun getNewsDetailsIntent(context: Context, news: NewsEntity): Intent =
-            if (isTablet(context)) {
+            if (isTablet()) {
                 getShowNewsInSameActivityIntent(context, news)
             } else {
                 getShowNewsInNewActivityIntent(context, news)

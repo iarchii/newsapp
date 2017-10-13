@@ -1,14 +1,17 @@
 package news.agoda.com.sample.newslist
 
-import dagger.Component
-import news.agoda.com.sample.dagger.BaseComponent
-import news.agoda.com.sample.dagger.PerActivity
+import dagger.Subcomponent
+import dagger.android.AndroidInjector
+import news.agoda.com.sample.dagger.PerFragment
 
-@PerActivity
-@Component(modules = arrayOf(), dependencies = arrayOf(BaseComponent::class))
-interface NewsListComponent {
+@PerFragment
+@Subcomponent(modules = arrayOf())
+interface NewsListComponent : AndroidInjector<NewsListFragment> {
 
     fun presenter(): NewsListPresenter
 
-    fun inject(fragment: NewsListFragment)
+    @Subcomponent.Builder
+    abstract class Builder : AndroidInjector.Builder<NewsListFragment>()
+
+
 }

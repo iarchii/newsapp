@@ -10,11 +10,11 @@ import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.data.RetainingLceViewState
 import com.jakewharton.rxbinding2.view.RxView
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_details.*
-import news.agoda.com.sample.NewsApplication
 import news.agoda.com.sample.R
 import news.agoda.com.sample.base.BaseLceFragment
-import news.agoda.com.sample.helpers.IntentStarter
+import news.agoda.com.sample.helpers.Navigator
 import news.agoda.com.sample.helpers.showToastShort
 import news.agoda.com.sample.model.NewsEntity
 import news.agoda.com.sample.newsdetails.NewsDetailsPresenter.View
@@ -26,8 +26,9 @@ class NewsDetailsFragment : BaseLceFragment<LinearLayout, NewsEntity, View, News
         const val TAG = "NewsDetailsFragment"
     }
 
-    @Inject lateinit var intentStarter: IntentStarter
-    private lateinit var detailsComponent: DetailsComponent
+    @Inject lateinit var navigator: Navigator
+    @Inject lateinit var detailsPresenter: NewsDetailsPresenter
+
 
     @Arg
     lateinit var news: NewsEntity
@@ -58,7 +59,7 @@ class NewsDetailsFragment : BaseLceFragment<LinearLayout, NewsEntity, View, News
 
     private fun showFullArticle() {
         val uri = presenter.getUri(news.articleUrl)
-        uri?.let { intentStarter.showBrowserForUrl(activity, uri) }
+        uri?.let { navigator.showBrowserForUrl(activity, uri) }
                 ?: activity.showToastShort(R.string.cant_open_article)
     }
 
@@ -84,15 +85,12 @@ class NewsDetailsFragment : BaseLceFragment<LinearLayout, NewsEntity, View, News
     }
 
     override fun createPresenter(): NewsDetailsPresenter
-            = detailsComponent.presenter()
+            = detailsPresenter
 
 
     override fun injectDependencies() {
         super.injectDependencies()
-        detailsComponent = DaggerDetailsComponent.builder()
-                .baseComponent(NewsApplication.baseComponent)
-                .build()
-        detailsComponent.inject(this)
+        AndroidSupportInjection.inject(this)
     }
 
 

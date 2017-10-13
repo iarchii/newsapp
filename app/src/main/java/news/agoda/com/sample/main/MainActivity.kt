@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import news.agoda.com.sample.helpers.show
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.merge_main_split_pane.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
-import news.agoda.com.sample.NewsApplication
 import news.agoda.com.sample.R
 import news.agoda.com.sample.base.BaseActivity
+import news.agoda.com.sample.helpers.show
 import news.agoda.com.sample.model.NewsEntity
 import news.agoda.com.sample.newsdetails.NewsDetailsFragment
 import news.agoda.com.sample.newsdetails.NewsDetailsFragmentBuilder
@@ -110,9 +110,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun injectDependencies() {
-        mainActivityComponent = DaggerMainActivityComponent
-                .builder().baseComponent(NewsApplication.baseComponent).build()
-        mainActivityComponent.inject(this)
+        AndroidInjection.inject(this)
     }
 
     override fun onBackPressed() {
