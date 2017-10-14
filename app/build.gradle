@@ -8,7 +8,7 @@ android {
     buildToolsVersion "26.0.2"
 
     defaultConfig {
-        applicationId "news.agoda.com.technewssample"
+        applicationId "xyz.thecodeside.news"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
