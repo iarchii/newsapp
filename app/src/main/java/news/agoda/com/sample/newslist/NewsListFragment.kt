@@ -17,7 +17,6 @@ class NewsListFragment : RefreshRecyclerFragment<List<NewsEntity>,
         NewsListPresenter.View, NewsListAdapter.NewsClickedListener
 {
 
-
     companion object {
         const val TAG = "NewsListFragment"
     }

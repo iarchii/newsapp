@@ -1,6 +1,5 @@
 package news.agoda.com.sample.helpers
 
-import android.support.v4.widget.SwipeRefreshLayout
 import android.util.DisplayMetrics
 import android.view.View
 import android.widget.EditText
@@ -65,16 +64,6 @@ fun View.convertPixelsToDp(px: Int): Int {
     val metrics = resources.displayMetrics
     val dp = px / (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
     return dp.toInt()
-}
-
-/**
- * Fix for SwipeRefreshLayout Error
- * http://stackoverflow.com/questions/27057449/when-switch-fragment-with-swiperefreshlayout-during-refreshing-fragment-freezes
- */
-fun SwipeRefreshLayout.clear() {
-    this.isRefreshing = false
-    this.destroyDrawingCache()
-    this.clearAnimation()
 }
 
 fun EditText.getStringText(): String = this.text.toString()

@@ -1,7 +1,5 @@
 package news.agoda.com.sample.newslist
 
-import android.accounts.NetworkErrorException
-import android.os.NetworkOnMainThreadException
 import com.nhaarman.mockito_kotlin.*
 import io.reactivex.Single
 import news.agoda.com.sample.helpers.Logger
