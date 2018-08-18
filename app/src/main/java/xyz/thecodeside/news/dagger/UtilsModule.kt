@@ -10,8 +10,8 @@ class UtilsModule {
 
     @Provides
     fun provideLogger(): Logger = object : Logger{
-        override fun logException(throwable: Throwable) {
-            throwable.printStackTrace()
+        override fun logException(throwable: Throwable?) {
+            throwable?.printStackTrace()
         }
     }
 

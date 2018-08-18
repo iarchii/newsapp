@@ -58,11 +58,11 @@ kotlin {
 
 
 dependencies {
-
     //kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.23.0'
-    compile "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.23.0"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:0.23.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.23.0"
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
 
     //MVP
     compile 'com.hannesdorfmann.mosby3:mvp-lce:3.0.4'

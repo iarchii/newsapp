@@ -2,5 +2,5 @@ package xyz.thecodeside.news.helpers
 
 
 interface Logger {
-    fun logException(throwable: Throwable)
+    fun logException(throwable: Throwable?)
 }

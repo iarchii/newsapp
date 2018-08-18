@@ -4,7 +4,7 @@ import kotlinx.coroutines.experimental.Deferred
 import retrofit2.http.GET
 import xyz.thecodeside.news.model.NewsResponse
 
-interface RemoteDataSource{
+interface RemoteDataSource {
 
     @GET("bins/nl6jh")
     fun getNews(): Deferred<NewsResponse>
