@@ -1,7 +1,7 @@
 package xyz.thecodeside.news.newslist
 
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView
-import xyz.thecodeside.news.base.RxViewBasePresenter
+import xyz.thecodeside.news.base.RxBasePresenter
 import xyz.thecodeside.news.dagger.ThreadModule
 import xyz.thecodeside.news.helpers.Logger
 import xyz.thecodeside.news.model.NewsEntity
@@ -19,7 +19,7 @@ class NewsListPresenter @Inject constructor(
         @Named(ThreadModule.BG_CONTEXT)
         private val bgContext: CoroutineContext
 
-) : RxViewBasePresenter<NewsListPresenter.View>() {
+) : RxBasePresenter<NewsListPresenter.View>() {
 
     interface View : MvpLceView<List<NewsEntity>>
 

@@ -9,7 +9,6 @@ import com.hannesdorfmann.fragmentargs.annotation.Arg
 import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.LceViewState
 import com.hannesdorfmann.mosby3.mvp.viewstate.lce.data.RetainingLceViewState
-import com.jakewharton.rxbinding2.view.RxView
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_details.*
 import xyz.thecodeside.news.R
@@ -48,12 +47,9 @@ class NewsDetailsFragment : BaseLceFragment<LinearLayout, NewsEntity, View, News
                 .setOldController(news_image.controller).build()
         news_image.controller = draweeController
 
-        presenter.registerSubscription(
-                RxView.clicks(full_story_link)
-                        .subscribe({
-                            showFullArticle()
-                        }))
-
+        full_story_link.setOnClickListener {
+            showFullArticle()
+        }
         showContent()
     }
 
