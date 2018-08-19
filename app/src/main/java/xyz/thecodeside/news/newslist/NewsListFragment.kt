@@ -47,7 +47,7 @@ class NewsListFragment : RefreshRecyclerFragment<List<NewsEntity>,
     }
 
     override fun onNewsClicked(news: NewsEntity) {
-        navigator.showNewsDetails(context,news)
+        navigator.showNewsDetails(context!!, news)
     }
 
 }

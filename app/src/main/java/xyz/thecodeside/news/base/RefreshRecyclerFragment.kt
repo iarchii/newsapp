@@ -20,11 +20,11 @@ abstract class RefreshRecyclerFragment<M : List<Parcelable>, V : MvpLceView<M>, 
 
     protected abstract fun createAdapter(): ListAdapter<M, VH>
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = createAdapter()
         val itemDecorator = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
-        itemDecorator.setDrawable(ContextCompat.getDrawable(activity, android.R.drawable.divider_horizontal_bright))
+        itemDecorator.setDrawable(ContextCompat.getDrawable(context!!, android.R.drawable.divider_horizontal_bright)!!)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.addItemDecoration(itemDecorator)
         recyclerView.adapter = adapter

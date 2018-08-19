@@ -2,6 +2,7 @@ package xyz.thecodeside.news.dagger
 
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.support.AndroidSupportInjectionModule
 import xyz.thecodeside.news.NewsApplication
 import javax.inject.Singleton
 

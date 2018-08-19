@@ -9,7 +9,7 @@ import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView
 abstract class RefreshFragment<M, V : MvpLceView<M>, P : MvpPresenter<V>> :
         BaseLceFragment<SwipeRefreshLayout, M, V, P>(), MvpLceView<M>, SwipeRefreshLayout.OnRefreshListener {
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView.setOnRefreshListener(this)
     }

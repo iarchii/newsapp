@@ -20,9 +20,9 @@ abstract class BaseLceFragment<CV : View, M, V : MvpLceView<M>, P : MvpPresenter
         FragmentArgs.inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         StateSaver.restoreInstanceState(this, savedInstanceState)
-        return inflater!!.inflate(layoutRes, container, false)
+        return inflater.inflate(layoutRes, container, false)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -30,7 +30,8 @@ abstract class BaseLceFragment<CV : View, M, V : MvpLceView<M>, P : MvpPresenter
         StateSaver.saveInstanceState(this, outState)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         injectDependencies()
         super.onViewCreated(view, savedInstanceState)
     }

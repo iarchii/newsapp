@@ -11,7 +11,7 @@ interface NewsListComponent : AndroidInjector<NewsListFragment> {
     fun presenter(): NewsListPresenter
 
     @Subcomponent.Builder
-    abstract class Builder : AndroidInjector.Builder<NewsListFragment>()
-
-
+    abstract class Builder : AndroidInjector.Builder<NewsListFragment>() {
+        abstract override fun build(): NewsListComponent
+    }
 }

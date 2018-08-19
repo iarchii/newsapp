@@ -33,7 +33,7 @@ class NewsDetailsFragment : BaseLceFragment<LinearLayout, NewsEntity, View, News
     @Arg
     lateinit var news: NewsEntity
 
-    override fun onViewCreated(view: android.view.View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showNews()
     }
@@ -59,8 +59,8 @@ class NewsDetailsFragment : BaseLceFragment<LinearLayout, NewsEntity, View, News
 
     private fun showFullArticle() {
         val uri = presenter.getUri(news.articleUrl)
-        uri?.let { navigator.showBrowserForUrl(activity, uri) }
-                ?: activity.showToastShort(R.string.cant_open_article)
+        uri?.let { navigator.showBrowserForUrl(activity!!, uri) }
+                ?: activity!!.showToastShort(R.string.cant_open_article)
     }
 
 

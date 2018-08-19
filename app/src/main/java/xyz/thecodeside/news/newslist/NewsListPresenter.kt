@@ -1,5 +1,6 @@
 package xyz.thecodeside.news.newslist
 
+import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView
 import xyz.thecodeside.news.base.RxViewBasePresenter
 import xyz.thecodeside.news.dagger.ThreadModule
 import xyz.thecodeside.news.helpers.Logger
