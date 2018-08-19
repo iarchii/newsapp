@@ -16,6 +16,7 @@ abstract class BaseLceFragment<CV : View, M, V : MvpLceView<M>, P : MvpPresenter
     @get:LayoutRes protected abstract val layoutRes: Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        injectDependencies()
         super.onCreate(savedInstanceState)
         FragmentArgs.inject(this)
     }
@@ -28,12 +29,6 @@ abstract class BaseLceFragment<CV : View, M, V : MvpLceView<M>, P : MvpPresenter
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         StateSaver.saveInstanceState(this, outState)
-    }
-
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        injectDependencies()
-        super.onViewCreated(view, savedInstanceState)
     }
 
     /**
