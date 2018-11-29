@@ -1,6 +1,6 @@
 package xyz.thecodeside.news.helpers
 
-import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.Deferred
 import xyz.thecodeside.news.model.Resources
 
 

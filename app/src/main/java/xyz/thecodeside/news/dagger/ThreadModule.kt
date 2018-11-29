@@ -2,10 +2,9 @@ package xyz.thecodeside.news.dagger
 
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Named
-import kotlin.coroutines.experimental.CoroutineContext
+import kotlin.coroutines.CoroutineContext
 
 
 @Module
@@ -18,9 +17,9 @@ class ThreadModule {
 
     @Provides
     @Named(BG_CONTEXT)
-    fun provideBGContext(): CoroutineContext = CommonPool
+    fun provideBGContext(): CoroutineContext = Dispatchers.IO
 
     @Provides
     @Named(UI_CONTEXT)
-    fun provideUIContext(): CoroutineContext = UI
+    fun provideUIContext(): CoroutineContext = Dispatchers.Main
 }

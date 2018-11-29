@@ -3,7 +3,7 @@ package xyz.thecodeside.news.repository.remote
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.experimental.CoroutineCallAdapterFactory
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -29,7 +29,6 @@ class RestApiProvider {
         if (BuildConfig.DEBUG) addLogging(builder)
 
         val client = builder.build()
-
 
         val t =  object : TypeToken<List<@JvmSuppressWildcards MediaEntity>>() {}.type
 

@@ -1,6 +1,6 @@
 package xyz.thecodeside.news.newslist
 
-import kotlinx.coroutines.experimental.Unconfined
+import kotlinx.coroutines.Dispatchers.Unconfined
 import org.junit.Before
 import org.junit.Rule
 import org.junit.runner.RunWith

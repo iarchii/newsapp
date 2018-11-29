@@ -1,6 +1,6 @@
 package xyz.thecodeside.news.repository.remote
 
-import kotlinx.coroutines.experimental.Deferred
+import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import xyz.thecodeside.news.model.NewsResponse
 
