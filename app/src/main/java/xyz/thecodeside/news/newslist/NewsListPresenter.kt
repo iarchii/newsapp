@@ -1,9 +1,9 @@
 package xyz.thecodeside.news.newslist
 
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import xyz.thecodeside.news.base.RxBasePresenter
+import kotlinx.coroutines.withContext
+import xyz.thecodeside.news.base.BasePresenter
 import xyz.thecodeside.news.dagger.ThreadModule
 import xyz.thecodeside.news.helpers.Logger
 import xyz.thecodeside.news.model.NewsEntity
@@ -19,15 +19,16 @@ class NewsListPresenter @Inject constructor(
         @Named(ThreadModule.BG_CONTEXT)
         private val bgContext: CoroutineContext
 
-) : RxBasePresenter<NewsListPresenter.View>() {
+) : BasePresenter<NewsListPresenter.View>() {
 
     interface View : MvpLceView<List<NewsEntity>>
 
     fun loadData(pullToRefresh: Boolean) {
-        GlobalScope.launch(uiContext) {
-
+        launch(uiContext) {
             view?.showLoading(pullToRefresh)
-            loadNews.load().apply {
+            withContext(bgContext) {
+                loadNews.load()
+            }.apply {
                 if (data != null) {
                     view?.run {
                         setData(data)

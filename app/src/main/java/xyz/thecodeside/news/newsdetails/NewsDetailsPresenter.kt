@@ -2,7 +2,7 @@ package xyz.thecodeside.news.newsdetails
 
 import android.net.Uri
 import com.hannesdorfmann.mosby3.mvp.lce.MvpLceView
-import xyz.thecodeside.news.base.RxBasePresenter
+import xyz.thecodeside.news.base.BasePresenter
 import xyz.thecodeside.news.helpers.Logger
 import xyz.thecodeside.news.model.NewsEntity
 import javax.inject.Inject
@@ -10,7 +10,7 @@ import javax.inject.Inject
 //TODO For now this presenter is not necessary but in more complex app it should be here
 class NewsDetailsPresenter @Inject constructor(
         private val logger: Logger
-) : RxBasePresenter<NewsDetailsPresenter.View>() {
+) : BasePresenter<NewsDetailsPresenter.View>() {
 
     interface View : MvpLceView<NewsEntity>
 
